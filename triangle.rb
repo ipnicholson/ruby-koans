@@ -14,7 +14,15 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  raise TriangleError, "Side lengths must be non-zero" if a<=0 || b<=0 || c<=0
+  raise TriangleError, "Two side lengths combined must be greater than the third" if (a + b > c) && (a + c > b) && (b + c > a)
+  if (a==b && b==c)
+    :equilateral
+  elsif (a==b || b==c || a==c)
+    :isosceles
+  else
+    :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
