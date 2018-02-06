@@ -15,7 +15,7 @@
 #
 def triangle(a, b, c)
   raise TriangleError, "Side lengths must be non-zero" if a<=0 || b<=0 || c<=0
-  raise TriangleError, "Two side lengths combined must be greater than the third" if (a + b > c) && (a + c > b) && (b + c > a)
+  raise TriangleError, "Two side lengths combined must be greater than the third" unless (a + b > c) && (a + c > b) && (b + c > a)
   if (a==b && b==c)
     :equilateral
   elsif (a==b || b==c || a==c)
