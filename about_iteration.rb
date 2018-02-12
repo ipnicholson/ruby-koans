@@ -77,29 +77,32 @@ class AboutIteration < Neo::Koan
   def test_find_locates_the_first_element_matching_a_criteria
     array = ["Jim", "Bill", "Clarence", "Doug", "Eli"]
 
-    assert_equal __, array.find { |item| item.size > 4 }
+    assert_equal "Clarence", array.find { |item| item.size > 4 }
   end
 
   def test_inject_will_blow_your_mind
     result = [2, 3, 4].inject(0) { |sum, item| sum + item }
-    assert_equal __, result
+    assert_equal 9, result
 
     result2 = [2, 3, 4].inject(1) { |product, item| product * item }
-    assert_equal __, result2
+    assert_equal 24, result2
 
     # Extra Credit:
     # Describe in your own words what inject does.
+
+    # It takes an accumulator as the first param, and iterates over the collection with the second param, performing the block operation
   end
 
   def test_all_iteration_methods_work_on_any_collection_not_just_arrays
     # Ranges act like a collection
     result = (1..3).map { |item| item + 10 }
-    assert_equal __, result
+    assert_equal (11..13).to_a, result
 
     # Files act like a collection of lines
     File.open("example_file.txt") do |file|
       upcase_lines = file.map { |line| line.strip.upcase }
-      assert_equal __, upcase_lines
+      result = %w(THIS IS A TEST)
+      assert_equal result, upcase_lines
     end
 
     # NOTE: You can create your own collections that work with each,
@@ -119,4 +122,5 @@ class AboutIteration < Neo::Koan
   #
   # When you get to the "AboutSandwichCode" koan, recheck your answer.
 
+  # Answer: to read the file line by line
 end
